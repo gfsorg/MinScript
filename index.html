@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MinScript Documentation</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --sidebar-bg: #1e293b;
+            --text-color: #e2e8f0;
+            --accent-color: #38bdf8;
+            --code-bg: #0b0f19;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Sidebar Styling */
+        nav {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 2rem 1.5rem;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-sub {
+            font-size: 0.8rem;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 400;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav li {
+            margin-bottom: 0.8rem;
+        }
+
+        nav a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Main Content Styling */
+        main {
+            margin-left: 280px;
+            padding: 3rem 4rem;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 3rem;
+        }
+
+        h1, h2, h3 {
+            color: #f8fafc;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.75rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 2rem; }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: #cbd5e1;
+        }
+
+        /* Code Block Styling */
+        pre {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.2rem;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+            font-family: 'Fira Code', Consolas, Monaco, monospace;
+            font-size: 0.9rem;
+        }
+
+        code {
+            font-family: 'Fira Code', Consolas, Monaco, monospace;
+            background-color: var(--code-bg);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #f472b6;
+        }
+
+        pre code {
+            padding: 0;
+            background-color: transparent;
+            color: inherit;
+        }
+
+        /* Syntax Highlighting Colors */
+        .kwd { color: #f472b6; font-weight: bold; } /* Keyword */
+        .str { color: #34d399; } /* String */
+        .num { color: #fbbf24; } /* Number */
+        .cmt { color: #64748b; font-style: italic; } /* Comment */
+        .truth { color: #a78bfa; font-weight: bold; } /* Truth statement */
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            nav { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--border-color); }
+            main { margin-left: 0; padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <nav>
+        <div class="logo">
+            MinScript <span class="logo-sub">.ms</span>
+        </div>
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#installation">Getting Started</a></li>
+            <li><a href="#variables">Variables</a></li>
+            <li><a href="#printing">Printing</a></li>
+            <li><a href="#philosophy">Core Philosophy</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Documentation -->
+    <main>
+        <section id="introduction">
+            <h1>MinScript Documentation</h1>
+            <p>Welcome to the official documentation for <strong>MinScript</strong>—the world's most lightweight, non-bloated scripting language. Designed to do exactly two things perfectly: manage variables and print data.</p>
+        </section>
+
+        <section id="installation">
+            <h2>Getting Started</h2>
+            <p>To run MinScript files (<code>.ms</code>), you need to compile the <code>msc.c</code> compiler engine using a standard C compiler.</p>
+            
+            <h3>1. Compilation</h3>
+            <pre><code>gcc msc.c -o msc</code></pre>
+
+            <h3>2. Execution</h3>
+            <p>Pass your script straight to the executable binary:</p>
+            <pre><code>./msc script.ms</code></pre>
+        </section>
+
+        <section id="variables">
+            <h2>Variable Declaration</h2>
+            <p>MinScript supports dynamically-typed variables initialized via the <code>let</code> keyword. Variables can dynamically accept integers, string literals, or reference other pre-existing variables.</p>
+            
+            <pre><code><span class="cmt"># Declaring an Integer</span>
+<span class="kwd">let</span> score = <span class="num">100</span>
+
+<span class="cmt"># Declaring a String</span>
+<span class="kwd">let</span> message = <span class="str">"Hello, World!"</span>
+
+<span class="cmt"># Copying a variable reference</span>
+<span class="kwd">let</span> backupScore = score</code></pre>
+        </section>
+
+        <section id="printing">
+            <h2>Printing</h2>
+            <p>The <code>print</code> command outputs content directly to standard output (stdout). It handles raw strings, integers, and variables flawlessly.</p>
+            
+            <pre><code><span class="kwd">print</span> <span class="str">"This is a literal string"</span>
+<span class="kwd">print</span> <span class="num">42</span>
+<span class="kwd">print</span> message</code></pre>
+        </section>
+
+        <section id="philosophy">
+            <h2>Core Philosophy</h2>
+            <p>MinScript was built on the foundation that software has strayed too far from simple constraints. If you ever need to reaffirm this absolute objective truth directly within your codebase, you can invoke the primary compiler statement:</p>
+            
+            <pre><code><span class="truth">every other language has too much bloat</span></code></pre>
+            
+            <p><strong>Output response from compiler:</strong></p>
+            <pre><code>yup, correct!</code></pre>
+        </section>
+    </main>
+
+</body>
+</html>
